@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">test_edu_project</string>
+    <string name="title_activity_system_info">SystemInfoActivity</string>
+</resources>
