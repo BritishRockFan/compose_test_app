@@ -33,30 +33,48 @@ import com.example.test_edu_project.ui.theme.Test_edu_projectTheme
 
 class MainActivity : ComponentActivity() {
 
+    var version = "3.10.7"
+    var buildNumber = "300.183"
+    var osVersion = "14.6"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Column(
-                modifier = Modifier.fillMaxSize().background(Color(0xFF000027)),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF000027)),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                TextButton(
-                    modifier = Modifier
-                        .height(40.dp)
-                        .width(304.dp),
-                    shape = RoundedCornerShape(100.dp),
-                    enabled = true,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0x33808093)
-                    ),
-                    onClick = { val navigate = Intent(this@MainActivity, SystemInfoActivity::class.java)
-                    startActivity(navigate)
-                }) {
-                    Text(text = "Сообщить о проблеме")
-                }
+                problemButton(version = version, buildNumber = buildNumber, osVersion = osVersion)
             }
         }
     }
-}
 
+    @Composable
+    private fun problemButton(
+        version: String,
+        buildNumber: String,
+        osVersion: String
+    ) {
+        TextButton(
+            modifier = Modifier
+                .height(40.dp)
+                .width(304.dp),
+            shape = RoundedCornerShape(100.dp),
+            enabled = true,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0x33808093)
+            ),
+            onClick = { val navigate = Intent(this@MainActivity, SystemInfoActivity::class.java)
+                navigate
+                    .putExtra("version", version)
+                    .putExtra("buildNumber", buildNumber)
+                    .putExtra("osVersion", osVersion)
+                startActivity(navigate)
+            }) {
+            Text(text = "Сообщить о проблеме")
+        }
+    }
+}
