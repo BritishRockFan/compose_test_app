@@ -32,10 +32,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.test_edu_project.ui.theme.ButtonColor
+import com.example.test_edu_project.ui.theme.DividerColor
+import com.example.test_edu_project.ui.theme.GrayColor
+import com.example.test_edu_project.ui.theme.PrimaryBackground
+import com.example.test_edu_project.ui.theme.PrimaryTextColor
 
 class SystemInfoActivity : ComponentActivity() {
 
@@ -50,23 +56,23 @@ class SystemInfoActivity : ComponentActivity() {
 
             Scaffold(modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF000027)), //primary background
+                .background(PrimaryBackground), //primary background
                 topBar = {
                     CenterAlignedTopAppBar(
                         modifier = Modifier
                             .padding(top = 24.dp)
                             .height(64.dp),
                         colors =
-                        TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF000027)), //default color must be 0xFF000027
+                        TopAppBarDefaults.topAppBarColors(containerColor = PrimaryBackground),
                         title = {
                         Text(
-                            text = "Обратная связь",
+                            text = stringResource(id = R.string.top_bar_title),
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 lineHeight = 28.sp),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
-                            color = Color(0xFFECEFF9), // primary text color
+                            color = PrimaryTextColor,
                         )
                     },
                         navigationIcon = {
@@ -80,7 +86,7 @@ class SystemInfoActivity : ComponentActivity() {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_back),
                                     contentDescription = null,
-                                    tint = Color(0xFFECEFF9))
+                                    tint = PrimaryTextColor)
                             }
                         }
                         )
@@ -89,7 +95,7 @@ class SystemInfoActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xFF000027))
+                        .background(PrimaryBackground)
                 ) {
                     Column(
                         modifier = Modifier
@@ -99,36 +105,36 @@ class SystemInfoActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         OsInfoItem(
-                            title = "Версия приложения",
+                            title = stringResource(id = R.string.app_version),
                             value = version!!, //Do not do that
                         )
                         Spacer(Modifier.height(8.dp))
                         Divider(
                             modifier = Modifier.fillMaxWidth(),
                             thickness = 1.dp,
-                            color = Color(0x19FFFFFF),
+                            color = DividerColor,
                         )
                         Spacer(Modifier.height(8.dp))
                         OsInfoItem(
-                            title = "Номер сборки",
+                            title = stringResource(id = R.string.build_number),
                             value = buildNumber!!,
                         )
                         Spacer(Modifier.height(8.dp))
                         Divider(
                             modifier = Modifier.fillMaxWidth(),
                             thickness = 1.dp,
-                            color = Color(0x19FFFFFF),
+                            color = DividerColor,
                         )
                         Spacer(Modifier.height(8.dp))
                         OsInfoItem(
-                            title = "Версия ОС",
+                            title = stringResource(id = R.string.os_version),
                             value = osVersion!!,
                         )
                         Spacer(Modifier.height(8.dp))
                         Divider(
                             modifier = Modifier.fillMaxWidth(),
                             thickness = 1.dp,
-                            color = Color(0x19FFFFFF),
+                            color = DividerColor,
                         )
                         Spacer(Modifier.height(36.dp))
                         TextButton(
@@ -138,29 +144,29 @@ class SystemInfoActivity : ComponentActivity() {
                             shape = RoundedCornerShape(100.dp),
                             enabled = true,
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0x33808093)
+                                containerColor = ButtonColor
                             ),
                             onClick = {
                                 Toast.makeText(baseContext, "Сообщение отправлено", Toast.LENGTH_LONG).show()
                             }) {
-                            Text(text = "Сообщить о проблеме")
+                            Text(text = stringResource(id = R.string.report_button))
                         }
                         Spacer(Modifier.weight(1f))
                         Text(
                             text = "АО «ЭР-Телеком Холдинг»",
-                            color = Color(0x33FFFFFF)
+                            color = GrayColor
                         )
-                        Spacer(Modifier.height(24.dp))
+                        Spacer(Modifier.height(8.dp))
                         Row {
                             Text(
                                 text = "+7 342 000 00 00",
-                                color = Color(0xFFECEFF9)
+                                color = PrimaryTextColor
                             )
                             Spacer(Modifier.width(18.dp))
-                            Text(text = "help@domru.ru", color = Color(0xFFECEFF9))
+                            Text(text = "help@domru.ru", color = PrimaryTextColor)
                         }
-                        Spacer(Modifier.height(24.dp))
-                        Text(text = "www.ertelecom.ru", color = Color(0xFFECEFF9))
+                        Spacer(Modifier.height(8.dp))
+                        Text(text = "www.ertelecom.ru", color = PrimaryTextColor)
                     }
                 }
             }
@@ -183,7 +189,7 @@ class SystemInfoActivity : ComponentActivity() {
                 style = TextStyle(
                     fontSize = 20.sp,
                     lineHeight = 28.sp),
-                color = Color(0xFFECEFF9)
+                color = PrimaryTextColor
             )
             Spacer(Modifier.weight(1f))
             Text(
@@ -191,7 +197,7 @@ class SystemInfoActivity : ComponentActivity() {
                 style = TextStyle(
                     fontSize = 20.sp,
                     lineHeight = 28.sp),
-                color = Color(0xFFECEFF9)
+                color = PrimaryTextColor
             )
         }
     }
