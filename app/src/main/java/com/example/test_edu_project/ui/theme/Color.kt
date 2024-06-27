@@ -14,6 +14,3 @@ val PrimaryTextColor = Color(0xFFECEFF9)
 val DividerColor = Color(0x19FFFFFF)
 val ButtonColor = Color(0x33808093)
 val GrayColor = Color(0x33FFFFFF)
-
-
-
