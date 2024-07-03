@@ -57,9 +57,6 @@ fun ReportScreen(
         .padding(24.dp),
         topBar = {
             CenterAlignedTopAppBar(
-                modifier = Modifier
-                    .padding(top = 24.dp)
-                    .height(64.dp),
                 colors =
                 TopAppBarDefaults.topAppBarColors(containerColor = PrimaryBackground),
                 title = {
