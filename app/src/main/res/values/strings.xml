@@ -7,5 +7,9 @@
     <string name="app_version">Версия приложения</string>
     <string name="build_number">Номер сборки</string>
     <string name="os_version">Версия ОС:</string>
-
+    <string name="toast_message">Сообщение отправлено</string>
+    <string name="holding_name">АО «ЭР-Телеком Холдинг»</string>
+    <string name="phone_number">+7 342 219 51 95</string>
+    <string name="help_email">help@domru.ru</string>
+    <string name="ertelecom_site">www.ertelecom.ru</string>
 </resources>

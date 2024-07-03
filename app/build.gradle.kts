@@ -11,12 +11,15 @@ android {
         applicationId = "com.example.test_edu_project"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3072024
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+        buildFeatures {
+            buildConfig = true
         }
     }
 
