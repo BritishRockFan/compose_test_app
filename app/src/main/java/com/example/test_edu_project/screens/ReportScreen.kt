@@ -1,8 +1,11 @@
 package com.example.test_edu_project.screens
 
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -144,18 +147,39 @@ fun ReportScreen(
                 Row {
                     Text(
                         text = stringResource(id = R.string.phone_number),
-                        color = PrimaryTextColor
+                        color = PrimaryTextColor,
+                        modifier = Modifier.clickable {
+                            val phone = context.getString(R.string.phone_number)
+                            val callerIntent = Intent(Intent.ACTION_DIAL)
+                            callerIntent.setData(Uri.parse("tel:$phone"))
+                            context.startActivity(callerIntent)
+                        }
                     )
                     Spacer(Modifier.width(18.dp))
                     Text(
                         text = stringResource(id = R.string.help_email), 
-                        color = PrimaryTextColor
+                        color = PrimaryTextColor,
+                        modifier = Modifier.clickable {
+                            val address = context.getString(R.string.help_email)
+                            val emailIntent = Intent(
+                                Intent.ACTION_SENDTO, Uri.parse(
+                                    "mailto:$address"
+                                )
+                            )
+                            context.startActivity(emailIntent)
+                        }
                     )
                 }
                 Spacer(Modifier.height(8.dp))
                 Text(
                     text = stringResource(id = R.string.ertelecom_site),
-                    color = PrimaryTextColor
+                    color = PrimaryTextColor,
+                    modifier = Modifier.clickable {
+                        val link = context.getString(R.string.ertelecom_site)
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.setData(Uri.parse("https://$link"))
+                        context.startActivity(intent)
+                    }
                 )
             }
         }
