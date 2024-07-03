@@ -30,16 +30,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.test_edu_project.items.ReportButton
 import com.example.test_edu_project.ui.theme.ButtonColor
 import com.example.test_edu_project.ui.theme.PrimaryBackground
 import com.example.test_edu_project.ui.theme.Test_edu_projectTheme
 
 class MainActivity : ComponentActivity() {
-
-    var version = "3.10.7"
-    var buildNumber = "300.183"
-    var osVersion = "14.6"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -50,34 +46,11 @@ class MainActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                problemButton(version = version, buildNumber = buildNumber, osVersion = osVersion)
+                ReportButton (onClick = {
+                    val navigate = Intent(this@MainActivity, SystemInfoActivity::class.java)
+                    startActivity(navigate)
+                })
             }
-        }
-    }
-
-    @Composable
-    private fun problemButton(
-        version: String,
-        buildNumber: String,
-        osVersion: String
-    ) {
-        TextButton(
-            modifier = Modifier
-                .height(40.dp)
-                .width(304.dp),
-            shape = RoundedCornerShape(100.dp),
-            enabled = true,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = ButtonColor
-            ),
-            onClick = { val navigate = Intent(this@MainActivity, SystemInfoActivity::class.java)
-                navigate
-                    .putExtra("version", version)
-                    .putExtra("buildNumber", buildNumber)
-                    .putExtra("osVersion", osVersion)
-                startActivity(navigate)
-            }) {
-            Text(text = stringResource(id = R.string.report_button))
         }
     }
 }
