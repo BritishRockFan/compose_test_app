@@ -1,13 +1,11 @@
 package com.example.test_edu_project.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.ui.platform.ComposeView
-import com.example.test_edu_project.R
+import androidx.fragment.app.Fragment
 import com.example.test_edu_project.screens.ReportScreen
 
 class ReportFragment(

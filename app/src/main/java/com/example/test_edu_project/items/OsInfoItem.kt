@@ -27,7 +27,8 @@ fun OsInfoItem(
             text = title,
             style = TextStyle(
                 fontSize = 20.sp,
-                lineHeight = 28.sp),
+                lineHeight = 28.sp
+            ),
             color = PrimaryTextColor
         )
         Spacer(Modifier.weight(1f))
@@ -35,7 +36,8 @@ fun OsInfoItem(
             text = value,
             style = TextStyle(
                 fontSize = 20.sp,
-                lineHeight = 28.sp),
+                lineHeight = 28.sp
+            ),
             color = PrimaryTextColor
         )
     }

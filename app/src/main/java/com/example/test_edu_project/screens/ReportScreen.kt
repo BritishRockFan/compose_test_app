@@ -3,7 +3,6 @@ package com.example.test_edu_project.screens
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.test_edu_project.MainActivity
 import com.example.test_edu_project.R
 import com.example.test_edu_project.items.OsInfoItem
 import com.example.test_edu_project.items.ReportButton
@@ -47,13 +47,14 @@ import com.example.test_edu_project.ui.theme.PrimaryTextColor
 fun ReportScreen(
     appVersion: String,
     buildNumber: Int,
-    osVersion: String
+    osVersion: String,
 ) {
     val context = LocalContext.current
 
     Scaffold(modifier = Modifier
         .fillMaxSize()
-        .background(PrimaryBackground), //primary background
+        .background(PrimaryBackground)
+        .padding(24.dp),
         topBar = {
             CenterAlignedTopAppBar(
                 modifier = Modifier
@@ -66,7 +67,8 @@ fun ReportScreen(
                         text = stringResource(id = R.string.top_bar_title),
                         style = TextStyle(
                             fontSize = 20.sp,
-                            lineHeight = 28.sp),
+                            lineHeight = 28.sp
+                        ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         color = PrimaryTextColor,
@@ -78,7 +80,8 @@ fun ReportScreen(
                             .height(28.dp)
                             .width(28.dp),
                         onClick = {
-                            OnBackPressedDispatcher().onBackPressed() //TODO
+                            val navigateBack = Intent(context, MainActivity::class.java)
+                            context.startActivity(navigateBack)
                         }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_back),
@@ -102,10 +105,11 @@ fun ReportScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                Spacer(Modifier.height(8.dp))
                 OsInfoItem(
                     title = stringResource(id = R.string.app_version),
                     value = appVersion
-                 )
+                )
                 Spacer(Modifier.height(8.dp))
                 Divider(
                     modifier = Modifier.fillMaxWidth(),
@@ -143,7 +147,7 @@ fun ReportScreen(
                     text = stringResource(id = R.string.holding_name),
                     color = GrayColor
                 )
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(4.dp))
                 Row {
                     Text(
                         text = stringResource(id = R.string.phone_number),
@@ -155,9 +159,9 @@ fun ReportScreen(
                             context.startActivity(callerIntent)
                         }
                     )
-                    Spacer(Modifier.width(18.dp))
+                    Spacer(Modifier.width(12.dp))
                     Text(
-                        text = stringResource(id = R.string.help_email), 
+                        text = stringResource(id = R.string.help_email),
                         color = PrimaryTextColor,
                         modifier = Modifier.clickable {
                             val address = context.getString(R.string.help_email)
@@ -170,16 +174,18 @@ fun ReportScreen(
                         }
                     )
                 }
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(4.dp))
                 Text(
                     text = stringResource(id = R.string.ertelecom_site),
                     color = PrimaryTextColor,
-                    modifier = Modifier.clickable {
-                        val link = context.getString(R.string.ertelecom_site)
-                        val intent = Intent(Intent.ACTION_VIEW)
-                        intent.setData(Uri.parse("https://$link"))
-                        context.startActivity(intent)
-                    }
+                    modifier = Modifier
+                        .padding(bottom = 20.dp)
+                        .clickable {
+                            val link = context.getString(R.string.ertelecom_site)
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.setData(Uri.parse("https://$link"))
+                            context.startActivity(intent)
+                        }
                 )
             }
         }
