@@ -17,7 +17,7 @@ class ReportFragment(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return ComposeView(requireContext()).apply {
             setContent {
                 ReportScreen(appVersion, buildNumber, osVersion)
